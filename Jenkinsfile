@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    tools {nodejs "nodejs"}
     environment {
         DOCKER_IMAGE_NAME = 'calculator'
         GITHUB_REPO_URL = 'https://github.com/AdarshTripathi-iiitb/calculatorDevops.git'
@@ -24,6 +24,15 @@ pipeline {
                 '''
             }
         }
+
+         stage('Testing') {
+            steps {
+                sh '''
+                npm run test
+                '''
+            }
+        }
+
 
         stage('Push Docker Images') {
             steps {
