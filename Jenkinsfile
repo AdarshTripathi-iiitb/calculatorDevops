@@ -25,9 +25,10 @@ pipeline {
             }
         }
 
-         stage('Testing') {
+        stage('Testing') {
             steps {
                 sh '''
+                npm install
                 npm run test
                 '''
             }
